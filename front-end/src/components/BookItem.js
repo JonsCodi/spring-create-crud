@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class BookItem extends Component{
 	constructor(props){
@@ -7,9 +9,24 @@ class BookItem extends Component{
 				item : props.item
 		}
 	}
+
+	onDelete(){
+		let id = this.state.item.id;
+		axios.delete('http://localhost:8080/book/'+id).then(res=>{
+			window.location.reload();
+		})
+	}
+
 	render(){
 		return(
-			<li>{this.state.item.name} </li>
+			<li className="list-group-item">
+			<Link to={'/book/'+this.state.item.name}>
+				{this.state.item.name}
+			</Link>
+				<span className="badge left">
+					<button className="btn btn-primary fa fa-minus" onClick={this.onDelete.bind(this)}></button>
+				</span>
+			</li>
 		)
 	}
 }

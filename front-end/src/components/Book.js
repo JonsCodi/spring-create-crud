@@ -1,12 +1,11 @@
 /**
- * 
+ *
  */
-
-
-
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import BookItem from './BookItem';
+
 class Book extends Component{
 	constructor(){
 		super();
@@ -33,9 +32,10 @@ class Book extends Component{
 		return(
 			<div>
 				<h1>BOOKS</h1>
-				<ul>
+				<ul className="list-group">
 					{bookItem}
 				</ul>
+				<Link to="/add">ADD BOOK</Link>
 			</div>
 		)
 	}

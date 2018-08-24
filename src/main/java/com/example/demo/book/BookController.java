@@ -39,4 +39,10 @@ public class BookController {
     public void delete(@PathVariable long id) {
         bs.delete(id);
     }
+    
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(method = RequestMethod.PUT, value = "/updateBook")
+    public void update(@RequestBody Book b) {
+        bs.update(b);
+    }
 }
